@@ -14,16 +14,27 @@ class ViewController: UIViewController {
         emojiAttachment.bounds = CGRect(x: 0, y: -5, width: 40, height: 40)
         content.append(NSAttributedString(attachment: emojiAttachment))
     }*/
-    let oneDegree = CGFloat.pi / 180
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        //animation
+    func duo(moveX: CGFloat, moveY: CGFloat, scale: CGFloat, rotateAngle: CGFloat){
         let myView = UIImageView(frame: CGRect(x: 0, y: 0, width: 201, height: 131))
         view.addSubview(myView)
         let animatedImage = UIImage.animatedImageNamed("a7f443bc5fda4ecefb077d567a1bc9a0pjmpBTDNumMNpSia-", duration: 2.5)
         myView.image = animatedImage
-        myView.transform = CGAffineTransform.identity.translatedBy(x: 90, y: 100).scaledBy(x: 1, y: 1).rotated(by: oneDegree * 0)
+        myView.transform = CGAffineTransform.identity.translatedBy(x: moveX, y: moveY).scaledBy(x: scale, y: scale).rotated(by: oneDegree * rotateAngle)
         view.addSubview(myView)
+    }
+    let oneDegree = CGFloat.pi / 180
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        //animation
+        /*let myView = UIImageView(frame: CGRect(x: 0, y: 0, width: 201, height: 131))
+        view.addSubview(myView)
+        let animatedImage = UIImage.animatedImageNamed("a7f443bc5fda4ecefb077d567a1bc9a0pjmpBTDNumMNpSia-", duration: 2.5)
+        myView.image = animatedImage
+        //myView.transform = CGAffineTransform.identity.translatedBy(x: 30, y: 100).scaledBy(x: 0.5, y: 0.5).rotated(by: oneDegree * 0)*/
+        duo(moveX: 10, moveY:100, scale: 0.5, rotateAngle: 0)
+        duo(moveX:160, moveY:100, scale: 0.5, rotateAngle: 180)
+        
+        //view.addSubview(myView)
         // text
         let content = NSMutableAttributedString(string: "在 ")
         let virusAttachment = NSTextAttachment()
